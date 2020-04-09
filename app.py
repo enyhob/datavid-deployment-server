@@ -15,6 +15,11 @@ def deploy():
     subprocess.run('make -C /app/datavid redeploy'.split())
 
 
+@app.route('/status')
+def status():
+    return 'ok'
+
+
 @app.route('/redeploy')
 def deploy_service():
     header = request.headers['auth']
