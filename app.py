@@ -12,7 +12,7 @@ def deploy():
     # wait on docker hub
     time.sleep(60)
     # execute redeploy
-    subprocess.run("make -C /app/datavid redeploy".split())
+    subprocess.run('make -C /app/datavid redeploy'.split())
 
 
 @app.route('/redeploy')
@@ -20,10 +20,10 @@ def deploy_service():
     header = request.headers['auth']
     if header == os.environ.get('TOKEN'):
         threading.Thread(target=deploy)
-        return "OK"
+        return 'OK'
 
     return Response('Access denied, wrong or missing token.', 401)
 
 
 if __name__ == '__main__':
-    app.run(port=8081)
+    app.run(host='0.0.0.0', port=8081)
