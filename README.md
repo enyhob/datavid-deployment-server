@@ -1,1 +1,1 @@
-make run TOKEN='someToken'
+make run TOKEN='someToken' PROJECT='/app/datavid'
