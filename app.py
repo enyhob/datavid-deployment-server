@@ -33,7 +33,7 @@ def status():
 @app.route('/redeploy')
 def deploy_service():
     logger.info('Checking token')
-    header = request.headers['auth']
+    header = request.headers.get('auth')
     logger.info('Header found.')
     if header == os.environ.get('TOKEN'):
         logger.info('Header matched.')
@@ -47,4 +47,4 @@ def deploy_service():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8081)
+    app.run(host='0.0.0.0', port=9091)
